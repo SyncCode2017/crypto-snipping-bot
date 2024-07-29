@@ -1,0 +1,16 @@
+{
+  "name": "sniping-bot",
+  "version": "1.0.0",
+  "description": "- to initiallize the project, run    npm init -y - install ethers and dotenv   npm i ethers     npm i dotenv",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2"
+  }
+}
