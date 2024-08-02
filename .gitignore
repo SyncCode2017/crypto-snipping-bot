@@ -1,6 +1,10 @@
 # Compiler files
 cache/
 out/
+lib/
+lib
+broadcast
+broadcast/
 
 # Ignores development broadcast logs
 !/broadcast
@@ -12,3 +16,13 @@ docs/
 
 # Dotenv file
 .env
+node_modules/
+/node_modules/
+script/
+src/
+web3_connectors.js
+README.md
+encryptingAVariable.md
+encrypt_decrypt.js
+decryptChatGPT.js
+convert_string_to_hex.js
