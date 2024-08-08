@@ -1,93 +1,42 @@
-## Foundry
+## Snipping Bot
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This bot monitors uniswap v2 dex for a new weth-token pair deployment (or launch of a new token) then buys (or snipes) the new token. It allows you to buy your desired tokens at a very low price few seconds after launch. 
 
-Foundry consists of:
+Since tokens generally launch at generally low prices, the profit from using this bot can be exponential.
+The stop loss and take profit points can be set in the bot.js file.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Please note that you can be rug-pulled if you deploy the bot to the mainnet as most of the new tokens are scam.
 
-## Documentation
+### Running the Bot Locally
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
+Clone this repo and run
 
 ```shell
-$ forge build
+$ yarn
 ```
+to install all the dependencies. Create the .env file and include all the necessary parameters as in the .env.example
 
-### Test
+Open 3 terminals and follow the steps below;
 
+1. In the first terminal, start up the blockchain by running
+   
 ```shell
-$ forge test
+$ make anvil
 ```
 
-### Format
-
+2. In the second terminal, start the bot by running
+   
 ```shell
-$ forge fmt
+$ make bot
 ```
 
-### Gas Snapshots
-
+3. You can run the test in the third terminal with the command below;
+   
 ```shell
-$ forge snapshot
+$ make test
 ```
 
-### Anvil
 
-```shell
-$ anvil
-```
+If you want to restart the bot at any point, ensure you delete the contents of snipeList.csv and tokenList.csv files.
+Then, follow the steps above.
 
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-
-### Encrypting a private key
-
-Encrypt the Private Key:
-1. run
-```bash
-cast wallet import devKey -i
-```
-This command will prompt you to set a password. It then encrypts the private key using this password and outputs an encrypted string.
-
-Run this command to see all the stored private keys
-```bash
-cast wallet list
-```
-
-2. To use the private key:
-run
-```makefile
-forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url http://localhost:8545 --account defaultKey --sender <address-associated-with-the-defaultKey> --broadcast -vvv
-```
-3. You can also run
-```
-cd
-cd .foundry/keystores/
-ls
-cat defaultKey
-```
